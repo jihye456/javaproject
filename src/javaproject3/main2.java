@@ -16,6 +16,7 @@ import java.awt.Font;
 public class main2 {
 
 	private JFrame frame;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -72,6 +73,32 @@ public class main2 {
 		JButton SearchButton = new JButton("\uAC80\uC0C9");
 		SearchButton.setBounds(158, 179, 123, 34);
 		mainpage.add(SearchButton);
+		
+		JPanel searchpage = new JPanel();
+		searchpage.setBounds(0, 0, 434, 261);
+		frame.getContentPane().add(searchpage);
+		searchpage.setLayout(null);
+		
+		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setBounds(30, 28, 73, 23);
+		searchpage.add(comboBox_1);
+		
+		textField = new JTextField();
+		textField.setBounds(128, 29, 268, 21);
+		searchpage.add(textField);
+		textField.setColumns(10);
+		
+		JTextArea textArea_3 = new JTextArea();
+		textArea_3.setBounds(30, 81, 367, 119);
+		searchpage.add(textArea_3);
+		
+		JButton searchButton = new JButton("\uAC80\uC0C9");
+		searchButton.setBounds(287, 210, 109, 41);
+		searchpage.add(searchButton);
+		
+		JButton searchlastButton = new JButton("\uB3CC\uC544\uAC00\uAE30");
+		searchlastButton.setBounds(168, 210, 109, 41);
+		searchpage.add(searchlastButton);
 	
 		
 		
@@ -127,6 +154,7 @@ public class main2 {
 			public void actionPerformed(ActionEvent e) {
 				mainpage.setVisible(true);
 				inputpage.setVisible(false);
+				searchpage.setVisible(false);
 			}
 		});
 				
@@ -137,8 +165,32 @@ public class main2 {
 			public void actionPerformed(ActionEvent e) {
 				mainpage.setVisible(false);
 				inputpage.setVisible(true);
+				searchpage.setVisible(false);
 			}
 		});
+		
+		
+		//검색 화면에서 돌아가기 버튼 누르면 검색 화면 없애고 메인화면 보이기
+			searchlastButton.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					mainpage.setVisible(true);
+					inputpage.setVisible(false);
+					searchpage.setVisible(false);
+				}
+			});
+			
+			//메인화면에서 검색 버튼 누르면 메인화면 없애고 검색화면 보이기
+			SearchButton.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					mainpage.setVisible(false);
+					inputpage.setVisible(false);
+					searchpage.setVisible(true);
+				}
+			});
 		
 	}
 }
